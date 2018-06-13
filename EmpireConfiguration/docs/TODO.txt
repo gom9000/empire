@@ -1,0 +1,38 @@
+TODO Configuration Module Library:
+----------------------------------
+
+- Portare la libreria da 1.5 a 1.4???
+
+- Chiudere e rilasciare una versione.
+
+
+La libreria di Configuration Management è in grado di:
+ - Leggere le proprietà da file (.properties e .xml) multipli;
+ - Leggere le proprietà da  file embedded multipli e ricorsivi;
+ - Gestire le proprietà con valori semplici e multipli (array di valori);
+ - Gestire gli attributi mandatory e optional;
+ - Gestire i tipi di dato (almeno i più comuni) degli attributi;
+ - Gestire gli attributi con default value;
+ - Eseguire la verifica/validazione/certificazione (manageProperties) della configurazione caricata;
+
+ 
+  ConfigurationException
+  SimpleConfiguration
+  		PropertiesLoader
+  		NotificationMessages
+  ManagedConfiguration
+  		SimpleConfiguration
+  		ManagedProperty
+
+
+PRIORITA' ALTA:
+---------------
+
+- javadocs e package.html in inglese.
+- inclusione di inner-file multipli.
+- opzione per creare array di valori nel caso di valori ripetuti (non su stessa riga) di stessi attributi.
+- gestire tutte le possibili situazioni secondo: "nessun errore, massima configurazione".
+
+
+PRIORITA' BASSA:
+---------------

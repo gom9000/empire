@@ -1,0 +1,39 @@
+E__M__P__I__R__E____E_W_A_alpha_________________________
+A basic example of usage of alpha-template in Empire WAF
+
+   ________        _________________.________
+  /  _____/  ____ /   _____/   __   \   ____/
+ /   \  ___ /  _ \\_____  \\____    /____  \
+ \    \_\  (  <_> )        \  /    //       \
+  \______  /\____/_______  / /____//______  /
+         \/              \/               \/
+  Copyright (c) 2009 2010 by
+   Alessandro Fraschetti (gos95@gommagomma.net)
+
+  For more information about Empire WAF visit:
+   http://gommagomma.net/gos95/empire
+
+
+
+EWA.alpha - a basic example of usage of alpha-template in Empire WAF
+--------------------------------------------------------------------
+Empire WAF is a basic java framework for web-application.
+Empire WAF rises from Gos-Work's ash.
+Empire WAF, state: building!
+
+
+Features
+--------
+The EWA.alpha works with jre version 1.4.
+
+
+Download
+--------
+The binary and source dist is available at: http://www.gommagomma.net/gos95/empire.
+
+
+Licensing
+---------
+EWA.alpha is published under the GNU Lesser General Public License (GNU LGPL).
+If you have further questions on EWA.alpha licensing, please contact: <gos95@gommagomma.net>.
+If you have further questions on GNU LGPL licensing see: <http://www.gnu.org/licenses/>.

@@ -1,0 +1,46 @@
+E__M__P__I__R__E____C_o_n_f_i_g_u_r_a_t_i_o_n____
+An Open Source Java Configuration Utility Library.
+
+   ________        _________________.________
+  /  _____/  ____ /   _____/   __   \   ____/
+ /   \  ___ /  _ \\_____  \\____    /____  \
+ \    \_\  (  <_> )        \  /    //       \
+  \______  /\____/_______  / /____//______  /
+         \/              \/               \/
+  Copyright (c) 2010 by
+   Alessandro Fraschetti (gos95@gommagomma.net)
+
+  For more information about Empire Configuration visit:
+   http://gommagomma.net/gos95/empire
+
+
+
+Empire Configuration - a configuration utility library
+------------------------------------------------------
+Empire Configuration is a basic java classes package for manages application configuration.
+Empire Configuration, state: building!
+
+
+Features
+--------
+The Empire Configuration works with jre version 1.5.
+The Empire Configuration module depends from Empire library: version X.x.Y.y depends from Empire library Y.y.
+
+
+Download
+--------
+The binary and source dist is available at: http://www.gommagomma.net/gos95/empire.
+
+
+Licensing
+---------
+Empire Configuration is published under the GNU Lesser General Public License (GNU LGPL).
+If you want to use Empire Configuration in a commercial product please contact: <gos95@gommagomma.net>.
+If you have further questions on Empire Configuration licensing, please contact: <gos95@gommagomma.net>.
+If you have further questions on GNU LGPL licensing see: <http://www.gnu.org/licenses/>.
+
+
+Changes
+-------
+Changes in Version 0.1.0.4 (2010-10-23)
+ - This was the first public version as separated module from Empire library.

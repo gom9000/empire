@@ -1,0 +1,156 @@
+/**
+ * Created by IntelliJ IDEA.
+ * User: Blesi Michele
+ * Date: 24-06-2008
+ * Time: 11.15.54
+ */
+// Copyright (c) 2000 Datamat S.p.A.
+
+package gtw.mv36;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.ResourceBundle;
+
+public class Logging {
+
+  private static String _fileNameLog;
+  private static String _oldFileNameLog;
+  private static String _pathLog;
+  private static long _sizeLog;
+
+  // Macro di definizione dei livelli di log
+  public static final int LEVEL_ERROR   = 1;
+  public static final int LEVEL_WARNING = 2;
+  public static final int LEVEL_INFO    = 3;
+  public static final int LEVEL_DEBUG   = 4;
+
+  // Livello del file di log
+  private int _log_level;
+
+  // se è settata a false stampa a video else scrive su file
+  private static boolean _createLogFile = false;
+
+  /**
+   * Il riferimento all'unica istanza della classe nella VM.
+   */
+  private static Logging s_instance = null;
+
+  // Formattazione della data corrente
+  private static SimpleDateFormat formatter = new SimpleDateFormat ("dd-MM-yy HH:mm:ss", Locale.getDefault());
+
+  /**
+   * Il costruttore è privato così da non poter istanziare la classe
+   */
+  private Logging(String propFileName) {
+    ResourceBundle rb = ResourceBundle.getBundle(propFileName);
+
+    // parametri di inizializzazione del file di log
+    String createLogFile = rb.getString("createLogFile");
+    _createLogFile  = "true".equalsIgnoreCase(createLogFile) ? true : false;
+    _fileNameLog    = rb.getString("fileNameLog");
+    _oldFileNameLog = rb.getString("oldFileNameLog");
+    _pathLog        = rb.getString("pathLog");
+    _sizeLog        = Long.parseLong(rb.getString("sizeLog"));
+    _log_level      = Integer.parseInt(rb.getString("log_level"));
+
+    /*
+    // parametri di inizializzazione del file di log
+    String createLogFile = (String)mp._hashConf.get("createLogFile");
+    _createLogFile  = "true".equalsIgnoreCase(createLogFile) ? true : false;
+    _fileNameLog    = (String)mp._hashConf.get("fileNameLog");
+    _oldFileNameLog = (String)mp._hashConf.get("oldFileNameLog");
+    _pathLog        = (String)mp._hashConf.get("pathLog");
+    _sizeLog        = Long.parseLong((String)mp._hashConf.get("sizeLog"));
+    _log_level      = Integer.parseInt((String)mp._hashConf.get("log_level"));
+     */
+
+    // Rinomino ad old l'ultimo file di log disponibile
+    File logFile = new File(_pathLog + _fileNameLog);
+    File logFileOld = new File(_pathLog + _oldFileNameLog);
+    logFile.renameTo(logFileOld);
+    logFile.delete();
+  }
+
+  // Questo metodo appende al file la stringa stringAction
+  private void writeString(String stringAction) {
+    try {
+      // Controllo se il file di log ha raggiunto la dimensione massima
+      File logFile = new File(_pathLog + _fileNameLog);
+      if (logFile.length() > _sizeLog) {
+        File logFileOld = new File(_pathLog + _oldFileNameLog);
+        logFile.renameTo(logFileOld);
+      }
+      FileWriter appFile = new FileWriter(_pathLog + _fileNameLog, true);
+
+      // Scrivo nel file di log
+      //appFile.write("- " + dateForLog + " > " + stringAction + "\n");
+      appFile.write(stringAction);
+      appFile.flush();
+      appFile.close();
+    }
+    catch(Exception ex) {
+      // nothing
+    }
+  }
+
+  public void writeMessage(String msg, int level_request) {
+    if (level_request <= _log_level) {
+      Date currDate = new Date(); //data corrente
+
+      // Trasformo in stringa la data corrente
+      String dateForLog = formatter.format(currDate);
+
+      // Inserimento del messaggio nel file
+      String level_string = "";
+      switch(level_request) {
+        case LEVEL_ERROR:
+          //level_string = "ERROR";
+          level_string = "Log1";
+          break;
+        case LEVEL_WARNING:
+          //level_string = "WARNING";
+          level_string = "Log2";
+          break;
+        case LEVEL_INFO:
+          //level_string = "INFO";
+          level_string = "Log3";
+          break;
+        case LEVEL_DEBUG:
+          //level_string = "DEBUG";
+          level_string = "Log4";
+          break;
+      }
+
+      msg = level_string + " - " + dateForLog + " > " + msg;
+
+      System.out.println(msg);
+      if(_createLogFile) {
+        writeString(msg + "\n");
+      }
+      //else {
+      //  System.out.println(msg);
+      //}
+    }
+  }
+
+  /**
+   * Metodo statico per ottenere l'unica istanza della classe, in accordo
+   * con in pattern Singleton.
+   *
+   * @return l'unica istanza della classe presente nella VM.
+   */
+  public static Logging getIstance(String propFileName) {
+    if (s_instance == null) {
+      s_instance = new Logging(propFileName);
+    }
+    return s_instance;
+  }
+
+  public static Logging getIstance() {
+    return s_instance;
+  }
+}

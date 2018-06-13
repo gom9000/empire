@@ -1,0 +1,51 @@
+E__M__P__I__R__E____W_A_F__(Web_Application_Framework)
+An Open Source Java Basic Web Application Framework.
+
+   ________        _________________.________
+  /  _____/  ____ /   _____/   __   \   ____/
+ /   \  ___ /  _ \\_____  \\____    /____  \
+ \    \_\  (  <_> )        \  /    //       \
+  \______  /\____/_______  / /____//______  /
+         \/              \/               \/
+  Copyright (c) 2007 2009 by
+   Alessandro Fraschetti (gos95@gommagomma.net)
+
+  For more information about Empire WAF visit:
+   http://gommagomma.net/gos95/Empire
+
+
+
+Empire WAF - a basic Web Application Framework
+---------------------------------------------------
+Empire WAF is a basic java framework for web-application.
+Empire WAF rises from Gos-Work's ash.
+Empire WAF, state: building!
+
+
+Features
+--------
+The Empire WAF works with jre version 1.4.
+The Empire WAF depends from Empire library: WAF 0.1.0.2 depends from Empire 0.2
+
+
+Download
+--------
+The binary and source dist is available at: http://www.gommagomma.net/gos95/Empire.
+
+
+Licensing
+---------
+Empire WAF is published under the GNU Lesser General Public License (GNU LGPL).
+If you want to use Empire WAF in a commercial product please contact: <gos95@gommagomma.net>.
+If you have further questions on Empire WAF licensing, please contact: <gos95@gommagomma.net>.
+If you have further questions on GNU LGPL licensing see: <http://www.gnu.org/licenses/>.
+
+
+Changes
+-------
+Changes in Version 0.1 (2006-03-03)
+ - This version was under the name of Gos-Work.
+
+Changes in Version 0.1.0.2 (2007-09-02)
+ - This was the initial public version under the terms of GNU LGPL license.
+ - Rename java package from gos95.empire.waf to net.gos95.empire.waf.

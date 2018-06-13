@@ -1,0 +1,23 @@
+TODO Empire Library:
+--------------------
+
+
+PRIORITA' ALTA:
+---------------
+
+- Rilascio Versione 0.4:
+    - Rivedi e correggi i javadoc;
+    - Rivedi e correggi tutti i testi in tutti i files;
+    - Documentazione della libreria:
+        - package lang: gerarchia degli oggetti e concetto di versioni delle classi;  
+        - package dao: spiegazioni ed utilizzo varie classi;
+        - package dto: concetto di dto e di pack (stile pattern dto-dtopack);
+
+    - oggetti di conversione (date, stringhe, ...)...
+
+
+PRIORITA' BASSA:
+---------------
+
+- Nuova tag class: empire.EmpireThread.
+	magari gestire una sorta di ThreadGroup con possibilità di interagire coi thread.

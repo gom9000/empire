@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+
+<project name="ewa-alpha" default="distribution" basedir="./">
+
+	<tstamp>
+	  <format property="touch.time" pattern="yyyy-MM-dd H:mm:ss"/>
+	</tstamp>
+
+	<!-- library Info properties -->
+	<property name="version" value="0.1"/>
+	<property name="author" value="Alessandro Fraschetti"/>
+
+	<property name="section.name" value="net.gos95.empire.waf.ewa.alpha"/>
+	<property name="specification.vendor" value="gos95"/>
+    <property name="specification.title" value="Empire library, state: building!"/>
+    <property name="specification.version" value="${version}"/>
+	<property name="implementation.vendor" value="gos95"/>
+    <property name="implementation.title" value="${ant.project.name}-${version}.jar"/>
+    <property name="implementation.version" value="${version} ${touch.time}"/> 
+
+
+	<!-- build properties -->
+	<property name="source.dir" value="${basedir}/src"/>
+	<property name="web.dir" value="${basedir}/web"/>
+    <property name="etc.dir" value="${basedir}/etc"/>
+    <property name="resources.dir" value="${basedir}/resources"/>
+	<property name="javadoc.dir" value="${basedir}/javadoc"/>
+	<property name="library.dir" value="${basedir}/lib"/>
+	<property name="build.dir" value="${basedir}/build"/>
+	<property name="dist.dir" value="${basedir}/dist"/>
+	<property name="temp.dir" value="${basedir}/temp"/>
+
+
+	<!-- distribution properties -->
+	<property name="dist.dir" value="${basedir}/dist"/>
+	<property name="dist.web.dir" value="${dist.dir}/${ant.project.name}"/>
+	<property name="dist.etc.dir" value="${dist.web.dir}/WEB-INF/etc"/>
+	<property name="dist.lib.dir" value="${dist.web.dir}/WEB-INF/lib"/>
+	<property name="dist.logs.dir" value="${dist.web.dir}/WEB-INF/logs"/>
+
+
+	<!-- build elements -->
+	<target name="clean" description="clean up">
+		<delete dir="${temp.dir}"/>
+    	<delete dir="${dist.dir}"/>
+    </target>
+	<target name="init" description="initialize distribution">
+		<mkdir dir="${temp.dir}"/>
+		<mkdir dir="${dist.dir}"/>
+    </target>
+
+	<target name="compile" description="compile source">
+		<javac source="1.4" target="1.4" debug="off" srcdir="${source.dir}" destdir="${build.dir}"/>
+	</target>
+
+
+	<!-- distribution -->
+	<target name="distribution" depends="clean, init, compile, dist.web, dist.etc, dist.lib, dist.jar" description="generate the binary and source code distribution">
+	    <jar destfile="${dist.dir}/${ant.project.name}.war">
+       	    <fileset dir="${dist.web.dir}"/>
+		</jar>
+		<zip destfile="${dist.dir}/${ant.project.name}-${version}-dist.zip">
+			<fileset dir="${dist.dir}" includes="${ant.project.name}.war"/>
+			<fileset dir="${basedir}" includes="src/**/*"/>
+			<fileset dir="${basedir}" includes="COPYING"/>
+			<fileset dir="${basedir}" includes="COPYING.LESSER"/>
+			<fileset dir="${basedir}" includes="${ant.project.name}.readme"/>
+		</zip>
+		<delete dir="${temp.dir}"/>
+		<delete dir="${dist.web.dir}"/>
+    </target>
+
+
+	<!-- distribution elements -->
+    <target name="dist.web" description="distribution web resources...">
+        <mkdir dir="${dist.web.dir}"/>
+        <copy todir="${dist.web.dir}">
+            <fileset dir="${web.dir}"/>
+        </copy>
+    </target>
+	<target name="dist.etc" description="distribution local config...">
+        <mkdir dir="${dist.etc.dir}"/>
+		<mkdir dir="${dist.logs.dir}"/><copy file="${etc.dir}\logger.conf" tofile="${dist.logs.dir}/logger.conf"/>
+		<copy file="${etc.dir}\logger.conf" tofile="${dist.etc.dir}/logger.conf"/>
+		<copy file="${etc.dir}\web.xml" tofile="${dist.web.dir}/WEB-INF/web.xml"/>
+    </target>
+	<target name="dist.lib" description="distribution libraries...">
+        <mkdir dir="${dist.lib.dir}"/>
+		<copy todir="${dist.lib.dir}">
+		    <fileset dir="${library.dir}" includes="**/*.jar" excludes="**/*junit*,**/j2ee.jar"/>  
+		</copy>
+    </target>
+    <target name="dist.jar" description="distribution jar classes...">
+        <jar destfile="${dist.lib.dir}/${implementation.title}">
+            <manifest>
+                <section name="${section.name}">
+                    <attribute name="Specification-Vendor" value="${specification.vendor}"/>
+                    <attribute name="Specification-Title" value="${specification.title}"/>
+                    <attribute name="Specification-Version" value="${specification.version}"/>
+                    <attribute name="Implementation-Vendor" value="${implementation.vendor}"/>
+                    <attribute name="Implementation-Title" value="${implementation.title}"/>
+                    <attribute name="Implementation-Version" value="${implementation.version}"/> 
+                </section>
+            </manifest>
+        	<fileset dir="${build.dir}" includes="**/*.class" excludes="**/*Test*"/>
+        </jar>
+    </target>
+
+</project>

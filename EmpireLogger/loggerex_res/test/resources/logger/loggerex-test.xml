@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE empire-logger-resources SYSTEM "http://gommagomma.net/gos95/Empire/empire-logger-resources.dtd">
+
+<!--
+/*
+ * E  M  P  I  R  E   Library
+ *   ________        _________________.________
+ *  /  _____/  ____ /   _____/   __   \   ____/
+ * /   \  ___ /  _ \\_____  \\____    /____  \
+ * \    \_\  (  <_> )        \  /    //       \
+ *  \______  /\____/_______  / /____//______  /
+ *         \/              \/               \/
+ * Copyright (c) 2007 2009 by
+ * Alessandro Fraschetti (gos95@gommagomma.net)
+ * 
+ * This file is part of the Empire library.
+ * For more information about Empire visit:
+ *     http://gommagomma.net/gos95/Empire
+ *
+ * Empire library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public License as 
+ * published by the Free Software Foundation; either version 2 of the
+ * License, or (at your option) any later version. 
+ *
+ * Empire library is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program; if not, see <http://www.gnu.org/licenses/>.
+ */
+ -->
+
+<pippo>
+<empire-logger-resources>
+
+  <areas>
+    <area id="ALL"/>
+    <area id="AREA1"/>
+    <area id="AREA2"/>
+  </areas>
+
+  <resources>
+    <resource alias="aliasN" level="INFO" pathname="" noappend="true" maxsize="" bakpath="" bakzip="false" area="ALL AREA2"/>
+
+    <!-- log su outputstream applicativo -->
+    <resource alias="alias1" level="WARNING"/>
+
+    <!-- log su "pathname2" in append continuo senza rotazione ne backup -->
+    <resource alias="alias2" level="WARNING" pathname="pathname2" writeandclose="true"/>
+    <resource alias="alias21" level="WARNING" pathname="pathname21" noappend="false" maxsize="0"/>
+
+    <!-- log su "pathname4" con rotazione alla chiusura del file e senza backup -->
+    <resource alias="alias4" level="INFO" pathname="pathname4" noappend="true"/>
+    <resource alias="alias41" level="WARNING" pathname="pathname41" noappend="true" maxsize="0"/>
+
+    <!-- log su "pathname3" in append continuo con rotazione alla maxsize di 1024Kb e senza backup -->
+    <resource alias="alias3" level="WARNING" pathname="pathname3" maxsize="1024"/>
+    <resource alias="alias31" level="ERROR" pathname="pathname31" noappend="false" maxsize="1024"/>
+
+    <!-- log su "pathname5" con rotazione alla chiusura e alla maxsize di 1024Kb e senza backup -->
+    <resource alias="alias5" level="WARNING" pathname="pathname5" noappend="true" maxsize="1024"/>
+
+    <!-- log su "pathname6" con rotazione alla chiusura del file e con backup zippato/non zippato -->
+    <resource alias="alias6" level="WARNING" pathname="pathname6" noappend="true" bakpath="pathnamebak" bakzip="true"/>
+    <resource alias="alias61" level="WARNING" pathname="pathname61" noappend="true" maxsize="0" bakpath="pathnamebak"/>
+  </resources>
+
+</empire-logger-resources>
+</pippo>

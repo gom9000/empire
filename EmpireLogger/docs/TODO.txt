@@ -1,0 +1,24 @@
+TODO Logger Module Library:
+---------------------------
+
+
+PRIORITA' ALTA:
+---------------
+
+- Risolvere errori javadoc.
+
+
+
+PRIORITA' BASSA:
+---------------
+
+- Nuova release:
+  - Gestione AREAS/CONTEXT.
+  - Gestione della modifica delle impostazione in real-time.
+  - Nuova classe LoggerEx:
+	  x validazione del file xml in base al dtd specificato;
+	  - lettura dei dati da file xml;
+      - gestione del log-level (INFO/WARNING/ERROR/DEBUG);
+	  - gestione del log-area/log-context (definito nel file di configurazione);
+	  - funzione per aggiunta dinamica di resources: addResource();
+	  - funzione per lo svuotamento a runtime dei resources su file: emptyResource();

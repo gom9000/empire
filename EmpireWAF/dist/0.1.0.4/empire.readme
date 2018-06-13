@@ -1,0 +1,68 @@
+E__M__P__I__R__E
+An Open Source general-purpose java utility library.
+
+   ________        _________________.________
+  /  _____/  ____ /   _____/   __   \   ____/
+ /   \  ___ /  _ \\_____  \\____    /____  \
+ \    \_\  (  <_> )        \  /    //       \
+  \______  /\____/_______  / /____//______  /
+         \/              \/               \/
+  Copyright (c) 2007 2009 2010 by
+   Alessandro Fraschetti (gos95@gommagomma.net)
+
+  For more information about Empire visit:
+   http://gommagomma.net/gos95/empire
+
+
+
+Empire - a java utility library
+-------------------------------
+Empire is a java library of custom hierarchy tag and general-purpose utility classes.
+Empire modules implements facilities to data and datatype conversions, configuration,
+logging, filesystem manager and more over.
+Empire architectural model leads to developing code compliant with modern j2ee principles.
+Empire rises from Gos-Work's ash.
+Empire, state: building!
+
+
+Features
+--------
+The Empire library works with jre version 1.4.
+
+
+Download
+--------
+The binary and source dist is available at: http://www.gommagomma.net/gos95/empire.
+
+
+Licensing
+---------
+Empire is published under the GNU Lesser General Public License (GNU LGPL).
+If you want to use Empire in a commercial product please contact: <gos95@gommagomma.net>.
+If you have further questions on Empire licensing, please contact: <gos95@gommagomma.net>.
+If you have further questions on GNU LGPL licensing see: <http://www.gnu.org/licenses/>.
+
+
+Changes
+-------
+Changes in Version 0.1 (2006-03-03)
+ - This version was under the name of Gos-Work.
+
+Changes in Version 0.1.2 (2007-08-15)
+ - Rename library name and java package from gos95.work to gos95.empire.
+ - Created UnitTest for library objects.
+
+Changes in Version 0.2 (2007-09-02)
+ - This was the initial version under the terms of GNU LGPL license (never published).
+ - Rename java package from gos95.empire to net.gos95.empire.waf.
+ - Added net.gos95.empire.waf.lang.EmpireObject as hierarchy root class.
+ - net.gos95.empire.waf.lang.StackException problems fixed.
+ - Completed UnitTest for all library objects.
+ 
+ Changes in Version 0.3 (2009-11-21)
+ - This was the first public version.
+ - Added net.gos95.empire.waf.configuration package.
+
+ Changes in Version 0.4 (2010-10-23)
+ - Extracted modules Configuration and Logger in two separated library.
+ - Added net.gos95.empire.waf.util.DOMValidator class.

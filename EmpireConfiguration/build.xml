@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+
+<project name="empire-configuration" default="distribution" basedir="./">
+
+	<tstamp>
+	  <format property="touch.time" pattern="yyyy-MM-dd H:mm:ss"/>
+	</tstamp>
+
+	<!-- module info properties -->
+	<property name="version" value="0.1.0.4"/>
+	<property name="author" value="Alessandro Fraschetti"/>
+
+    <property name="javadoc.doctitle" value="Empire library, state: building! Configuration Module"/>
+	<property name="section.name" value="net.gos95.empire.configuration"/>
+	<property name="specification.vendor" value="gos95"/>
+    <property name="specification.title" value="Configuration Module - Empire library, state: building!"/>
+    <property name="specification.version" value="${version}"/>
+	<property name="implementation.vendor" value="gos95"/>
+    <property name="implementation.title" value="${ant.project.name}-${version}.jar"/>
+    <property name="implementation.version" value="${version} ${touch.time}"/> 
+
+
+	<!-- module build properties -->
+	<property name="source.dir" value="${basedir}/src"/>
+    <property name="test.dir" value="${basedir}/test"/>
+    <property name="etc.dir" value="${basedir}/etc"/>
+    <property name="resources.dir" value="${basedir}/resources"/>
+	<property name="javadoc.dir" value="${basedir}/javadoc"/>
+	<property name="library.dir" value="${basedir}/lib"/>
+	<property name="build.dir" value="${basedir}/build"/>
+	<property name="dist.dir" value="${basedir}/dist"/>
+	<property name="temp.dir" value="${basedir}/temp"/>
+
+
+	<!-- module build elements -->
+	<target name="clean" description="clean up">
+		<delete dir="${temp.dir}"/>
+		<delete dir="${javadoc.dir}"/>
+    	<delete dir="${dist.dir}/${version}"/>
+    </target>
+	<target name="init" description="initialize distribution">
+		<mkdir dir="${temp.dir}"/>
+		<mkdir dir="${javadoc.dir}"/>
+		<mkdir dir="${dist.dir}/${version}"/>
+    </target>
+
+    <target name="javadoc" description="generates javadoc">
+        <javadoc access="public" author="true" source="1.3" sourcepath="src" classpath="${library.dir}/empire-0.4.jar" destdir="${javadoc.dir}" doctitle="${javadoc.doctitle}" windowtitle="${javadoc.doctitle}" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" splitindex="true" use="true" version="true"/>
+    </target>
+
+	<target name="compile" description="compile source">
+		<javac source="1.5" target="1.5" debug="off" srcdir="${source.dir}" destdir="${build.dir}"/>
+	</target>
+
+
+	<!-- distribution -->
+	<target name="distribution" depends="clean, init, compile, dist.docs, dist.binary, dist.source" description="generate the binary and source code distribution">
+		<copy todir="${dist.dir}/${version}">
+			<fileset dir="${basedir}" includes="COPYING"/>
+			<fileset dir="${basedir}" includes="COPYING.LESSER"/>
+			<fileset dir="${basedir}" includes="${ant.project.name}.readme"/>
+			<fileset dir="${library.dir}"/>
+		</copy>
+		<zip destfile="${dist.dir}/${version}/${ant.project.name}-${version}-dist.zip">
+			<fileset dir="${dist.dir}/${version}"/>
+		</zip>
+		<delete dir="${temp.dir}"/>
+    </target>
+
+
+	<!-- distribution elements -->
+	<target name="dist.binary" description="generate the binary code distribution">
+		<jar destfile="${dist.dir}/${version}/${implementation.title}">
+            <fileset dir="${build.dir}" includes="**/*.class" excludes="**/*Test*, **/support/*.*"/>
+			<fileset dir="${basedir}" includes="etc**/*" excludes="**/*test*"/>
+    		<manifest>
+    		    <section name="${section.name}">
+    		    	<attribute name="Specification-Vendor" value="${specification.vendor}"/>
+    		        <attribute name="Specification-Title" value="${specification.title}"/>
+    		        <attribute name="Specification-Version" value="${specification.version}"/>
+    		    	<attribute name="Implementation-Vendor" value="${implementation.vendor}"/>
+    		        <attribute name="Implementation-Title" value="${implementation.title}"/>
+    		        <attribute name="Implementation-Version" value="${implementation.version}"/> 
+    		    </section>
+    		</manifest>
+        </jar>
+	</target>
+
+	<target name="dist.source" description="generate the source code distribution">
+    	<zip destfile="${dist.dir}/${version}/${ant.project.name}-${version}-src.zip">
+    		<fileset dir="${basedir}" includes="src/**/*"/>
+    		<fileset dir="${basedir}" includes="test/**/*"/>
+    		<fileset dir="${basedir}" includes="etc/**/*"/>
+    		<fileset dir="${basedir}" includes="resources/**/*"/>
+    		<fileset dir="${basedir}" includes="lib/**/*.jar"/>
+    		<fileset dir="${basedir}" includes="build.xml"/>
+    		<fileset dir="${basedir}" includes="COPYING"/>
+    		<fileset dir="${basedir}" includes="COPYING.LESSER"/>
+    		<fileset dir="${basedir}" includes="${ant.project.name}.readme"/>
+        </zip>
+	</target>
+
+	<target name="dist.docs" depends="javadoc" description="generates the javadoc">
+        <mkdir dir="${dist.dir}/${version}/docs"/>
+		<copy todir="${dist.dir}/${version}/docs">
+		    <fileset dir="${javadoc.dir}"/> 
+		</copy>
+    	<zip destfile="${dist.dir}/${version}/${ant.project.name}-${version}-docs.zip">
+    		<fileset dir="${dist.dir}/${version}" includes="docs/**/*"/>
+    	</zip>
+    	<delete dir="${dist.dir}/${version}/docs"/>
+	</target>
+
+</project>

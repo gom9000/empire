@@ -1,0 +1,23 @@
+TODO: EmpireWAF Web Application Framework, state: building!
+-----------------------------------------------------------
+
+
+PRIORITA' ALTA:
+---------------
+
+- Rilascio EmpireWAF-0.1.0.4:
+
+    - documentazione javadoc package:
+		- empire.waf.template.alpha   (documenta tutto in modo da eliminare templates/alpha...)
+		- empire.waf.util.messages
+		- empire.waf.util.navigator
+		- empire.waf.util.session
+
+    - test case util package:
+    	- util.navigator;
+
+
+
+PRIORITA' BASSA:
+----------------
+

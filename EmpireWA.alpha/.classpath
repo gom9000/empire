@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="**/*" kind="src" path="etc"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/j2sdk1.4.2_19"/>
+	<classpathentry kind="lib" path="lib/empire-0.4.jar" sourcepath="/Empire/dist/0.4/empire-0.4-src.zip"/>
+	<classpathentry kind="lib" path="lib/empire-waf-0.1.0.4.jar" sourcepath="/EmpireWAF/dist/0.1.0.4/empire-waf-0.1.0.4-src.zip"/>
+	<classpathentry kind="lib" path="lib/j2ee.jar"/>
+	<classpathentry kind="output" path="build"/>
+</classpath>

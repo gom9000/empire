@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+    <!-- BEGIN EWAF Template Alpha Info -->
+    <context-param>
+        <param-name>servletErrorMessage</param-name>
+        <param-value>A servlet error has occurred.</param-value>
+    </context-param>
+    <context-param>
+        <param-name>sessionErrorMessage</param-name>
+        <param-value>Session expired.</param-value>
+    </context-param>
+    <context-param>
+        <param-name>dispatcherURL</param-name>
+        <param-value>dispatcher</param-value>
+    </context-param>
+    <context-param>
+        <param-name>accessControllerURL</param-name>
+        <param-value>AccessCTRL</param-value>
+    </context-param>
+    <context-param>
+        <param-name>messageControllerURL</param-name>
+        <param-value>MessageCTRL</param-value>
+    </context-param>
+    <context-param>
+        <param-name>loggerConfigFile</param-name>
+        <param-value>./logger.conf</param-value>
+    </context-param>
+    <context-param>
+        <param-name>loggerLogFile</param-name>
+        <param-value>./logger.log</param-value>
+    </context-param>
+    <servlet>
+        <servlet-name>Dispatcher</servlet-name>
+        <servlet-class>net.gos95.empire.waf.template.alpha.Dispatcher</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Dispatcher</servlet-name>
+        <url-pattern>/dispatcher/*</url-pattern>
+    </servlet-mapping>
+    <!-- END EWAF Template Alpha Info -->
+
+
+</web-app>
